@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}جميع المنشورات{% endblock title %}
+
+{% block content %}
+
+
+<h2>جميع المنشورات</h2>
+
+<div class='row'>
+    {% for post in posts  %}
+    <div class='col-sm-4 card p-4 m-4'>
+        <h4><b>
+            <a href='{% url 'post:single-post' post.id %}'>
+            {{post}}
+            </a>
+        </b></h4> 
+        <p>{{post.date_published}}</p>
+        <br>
+        {{post.content|truncatewords:20}}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
